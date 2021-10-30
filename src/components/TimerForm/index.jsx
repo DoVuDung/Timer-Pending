@@ -37,7 +37,7 @@ const TimerForm = ({ id, title, project, onCancel, onUpdate }) => {
 
       <div>
         <Button className="btn--cancel" onClick={onCancel}>Cancel</Button>
-        <Button className={`${updateLabel}`} onClick={handleUpdate}>{updateLabel}</Button>
+        <Button className="updateLabel" onClick={handleUpdate}>{updateLabel}</Button>
       </div>
     </div>
   );

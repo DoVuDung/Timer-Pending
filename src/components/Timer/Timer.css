@@ -4,6 +4,10 @@
     color: #111;
 }
 
+.App-component:hover {
+    cursor: pointer;
+}
+
 .App-component>div {
     display: flex;
     justify-content: space-around;
@@ -30,8 +34,13 @@
     touch-action: manipulation;
 }
 
-.btn--STOP:hover,
-.btn--START:hover {}
+.btn--STOP:hover {
+    background-color: rgb(228, 228, 62);
+}
+
+.btn--START:hover {
+    background-color: rgb(66, 66, 197);
+}
 
 .edit,
 .remove {

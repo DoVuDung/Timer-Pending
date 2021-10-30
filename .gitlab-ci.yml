@@ -1,0 +1,30 @@
+stages:
+  - build
+  - deploy
+
+build:
+  image: node:latest
+  stage: build
+  variables:
+    # Replace this with your site URL
+    PUBLIC_URL: https://loctran_datahouse.gitlab.io/dha-training-react-redux/
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+
+pages:
+  image: alpine:latest
+  stage: deploy
+  only:
+    - master
+  variables:
+    GIT_STRATEGY: none # Do not clone git repo
+  script:
+    # Rename the CRA `build` folder to `public`
+    - mv build public
+  artifacts:
+    paths:
+      - public

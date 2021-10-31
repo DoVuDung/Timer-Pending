@@ -6,21 +6,20 @@ import { getNewTimer } from './utils/TimerUtils';
 
 function App() {
   const timerRef = useRef(null);
-  const [timers, setTimers] = useState([
-    {
-      id: '1',
-      title: 'Learn React',
-      project: 'Internship',
-      time: 123412,
-      isRunning: true,
-    },
-    {
-      id: '2',
-      title: 'Learn React P2',
-      project: 'Internship',
-      time: 1234122,
-      isRunning: false,
-    },
+  const [timers, setTimers] = useState([{
+    id: '1',
+    title: 'Learn React',
+    project: 'Internship',
+    time: 123412,
+    isRunning: false,
+  },
+  {
+    id: '2',
+    title: 'Learn React P2',
+    project: 'Internship',
+    time: 1234122,
+    isRunning: false,
+  },
   ]);
 
   const handleUpdateTimer = (data) => {
@@ -42,7 +41,9 @@ function App() {
     const newTimer = getNewTimer(data);
     setTimers([newTimer, ...timers]);
   };
-
+  const handleRemoveTimer = (id) => {
+    setTimers(timers.filter((timer) => timer.id !== id));
+  };
   useEffect(() => {
     clearTimeout(timerRef.current);
 
@@ -62,25 +63,27 @@ function App() {
   }, [timers]);
 
   return (
-    <div className='App'>
-      <h1>Timers</h1>
+    <div className='App' >
+      <h1> Timers </h1>
+      <
+        ToggableTimerForm onCreate={handleCreateTimer}
+      />
 
-      <ToggableTimerForm onCreate={handleCreateTimer} />
-
-      {timers.map((timer, idx) => {
-        return (
-          <EditableTimerForm
-            key={timer.id}
+      {
+        timers.map((timer, idx) => {
+          return (<
+            EditableTimerForm key={timer.id}
             id={timer.id}
             title={timer.title}
             project={timer.project}
             time={timer.time}
+            onRemove={handleRemoveTimer}
             isRunning={timer.isRunning}
             onUpdate={handleUpdateTimer}
           />
-        );
-      })}
-    </div>
+          );
+        })
+      } </div>
   );
 }
 

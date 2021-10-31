@@ -5,12 +5,13 @@
 }
 
 .App-component:hover {
-    cursor: pointer;
+    border: 2px dotted #111;
 }
 
 .App-component>div {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 32px;
 }
 
 .btn--STOP,

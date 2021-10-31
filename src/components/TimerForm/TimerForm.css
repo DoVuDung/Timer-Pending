@@ -1,7 +1,13 @@
 .form__edit {
-    display: flex;
-    justify-content: space-between;
-    background-color: tomato;
+    display: flexbox;
+    margin: 8px 0;
+}
+
+input {
+    border-radius: 10px;
+    border-color: unset;
+    height: 32px;
+    padding-left: 16px;
 }
 
 .btn--cancel,

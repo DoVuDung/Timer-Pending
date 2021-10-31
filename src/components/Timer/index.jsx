@@ -4,13 +4,11 @@ import Button from '../Button';
 import './Timer.css';
 const Timer = ({ title, project, time, isRunning, onEdit, onRemove }) => {
   const buttonLabel = isRunning ? 'STOP' : 'START';
-
   const handleEdit = () => {
     onEdit();
   };
-  const handleRemove = () =>{
-    onRemove();
-  }
+  
+ 
   return (
     <div className='App-component'>
       <p>{title}</p>
@@ -19,10 +17,10 @@ const Timer = ({ title, project, time, isRunning, onEdit, onRemove }) => {
 
       <div>
         <Button className="edit" onClick={handleEdit}>EDIT</Button>
-        <Button className="remove" onClick={handleRemove}>REMOVE</Button>
+        <Button className="remove" onClick={onRemove}>REMOVE</Button>
       </div>
 
-      <Button className={`btn--${buttonLabel}`}>{buttonLabel}</Button>
+      <Button className={`btn--${buttonLabel}`} >{buttonLabel}</Button>
     </div>
   );
 };

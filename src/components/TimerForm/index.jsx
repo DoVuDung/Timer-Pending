@@ -17,7 +17,7 @@ const TimerForm = ({ id, title, project, onCancel, onUpdate }) => {
 
   return (
     <div className='App-component'>
-      <div class="form__edit">
+      <div className="form__edit">
         <label htmlFor='title'>Title</label>
         <input
           id='title'
@@ -26,7 +26,7 @@ const TimerForm = ({ id, title, project, onCancel, onUpdate }) => {
         ></input>
       </div>
 
-      <div class="form__edit">
+      <div className="form__edit">
         <label htmlFor='project'>Project</label>
         <input
           id='project'

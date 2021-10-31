@@ -9,6 +9,8 @@ const EditableTimerForm = ({
   time,
   isRunning,
   onUpdate,
+  onRemove,
+  onPlayChange
 }) => {
   const [isEdit, setIsEdit] = useState(false);
 
@@ -33,16 +35,20 @@ const EditableTimerForm = ({
         project={project}
         onCancel={handleCloseForm}
         onUpdate={handleUpdate}
+
       />
     );
 
   return (
     <Timer
+      id={id}
       title={title}
       project={project}
       time={time}
       isRunning={isRunning}
       onEdit={handleOpenForm}
+      onRemove={onRemove}
+      onPlayChange={onPlayChange}
     />
   );
 };

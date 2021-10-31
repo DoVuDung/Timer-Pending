@@ -6,6 +6,8 @@ import { getNewTimer } from './utils/TimerUtils';
 
 function App() {
   const timerRef = useRef(null);
+
+  //timer = {}
   const [timers, setTimers] = useState([{
     id: '1',
     title: 'Learn React',
@@ -21,6 +23,18 @@ function App() {
     isRunning: false,
   },
   ]);
+  const changeIsRunning = (id) => {
+    const newTimers = timers.map((timer, idx) => {
+      if (timer.id === id)
+        return {
+          ...timer,
+          isRunning: !timer.isRunning
+        };
+      return timer;
+    });
+
+    setTimers(newTimers);
+  }
 
   const handleUpdateTimer = (data) => {
     const newTimers = timers.map((timer, idx) => {
@@ -41,8 +55,10 @@ function App() {
     const newTimer = getNewTimer(data);
     setTimers([newTimer, ...timers]);
   };
+
   const handleRemoveTimer = (id) => {
     setTimers(timers.filter((timer) => timer.id !== id));
+
   };
   useEffect(() => {
     clearTimeout(timerRef.current);
@@ -65,10 +81,7 @@ function App() {
   return (
     <div className='App' >
       <h1> Timers </h1>
-      <
-        ToggableTimerForm onCreate={handleCreateTimer}
-      />
-
+      <ToggableTimerForm onCreate={handleCreateTimer} />
       {
         timers.map((timer, idx) => {
           return (<
@@ -80,6 +93,7 @@ function App() {
             onRemove={handleRemoveTimer}
             isRunning={timer.isRunning}
             onUpdate={handleUpdateTimer}
+            onPlayChange={changeIsRunning}
           />
           );
         })
